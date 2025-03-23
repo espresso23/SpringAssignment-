@@ -1,5 +1,3 @@
-Tôi sẽ giải thích chi tiết về chương trình:
-
 ### 1. Mục tiêu của chương trình:
 - **Mục tiêu chính**: Thực hành các khái niệm cơ bản của lập trình Java và Spring Framework:
   1. OOP (Object-Oriented Programming)
@@ -106,4 +104,14 @@ Tôi sẽ giải thích chi tiết về chương trình:
 3. Nắm được cách Spring quản lý dependencies
 4. Tạo được ứng dụng hoàn chỉnh với đầy đủ chức năng
 
-Đây là một bài tập tốt để học viên làm quen với Java và Spring Framework, từ đó có thể phát triển các ứng dụng phức tạp hơn trong tương lai.
+**Các annotation tạo Bean phổ biến:**
+
+1. `@Component`: Bean chung chung
+2. `@Service`: Bean xử lý business logic
+3. `@Repository`: Bean tương tác với database
+4. `@Controller`/`@RestController`: Bean xử lý web requests
+
+### 2. @Autowired là gì?
+
+- `@Autowired` là cách yêu cầu Spring inject (tiêm) một Bean vào nơi cần dùng
+- Spring sẽ tìm Bean phù hợp và tự động inject vào
