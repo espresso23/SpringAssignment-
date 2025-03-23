@@ -1,117 +1,178 @@
-### 1. Mục tiêu của chương trình:
-- **Mục tiêu chính**: Thực hành các khái niệm cơ bản của lập trình Java và Spring Framework:
-  1. OOP (Object-Oriented Programming)
-  2. File I/O (Input/Output)
-  3. Spring Core (IoC - Inversion of Control và DI - Dependency Injection)
+# AIPO User Management System
 
-### 2. Cấu trúc chương trình:
-1. **Package `model`**:
-   ```java
-   public class Pet implements Serializable {
-       private String name;    // Tên thú cưng
-       private String type;    // Loại (cat, dog,...)
-       private int age;        // Tuổi
-   }
-   ```
-   - Đây là class mô tả thú cưng với các thuộc tính cơ bản
-   - Có phương thức `makeNoise()` để mô phỏng tiếng kêu của thú cưng
+## Overview
+This is a user management system built with Spring Boot, implementing the AIPO (Open Source Groupware) user management functionality. The system allows for user creation, searching, and management with a modern web interface.
 
-2. **Package `service`**:
-   ```java
-   @Service
-   public class IOService {
-       public void savePets(List<Pet> pets) { ... }
-       public List<Pet> getPets() { ... }
-   }
-   ```
-   - Class này xử lý việc đọc/ghi file
-   - Được đánh dấu `@Service` để Spring quản lý
+## Prerequisites
+- Java 17
+- Maven 3+
+- SQL Server
+- IDE (IntelliJ IDEA or Eclipse recommended)
 
-3. **Class `Test`**:
-   ```java
-   @Component
-   public class Test implements CommandLineRunner {
-       @Autowired
-       private IOService ioService;
-       
-       @Override
-       public void run(String... args) { ... }
-   }
-   ```
-   - Class demo chức năng của chương trình
-   - Sử dụng Spring DI để inject `IOService`
+## Database Setup
+1. Create a new database named `Long101`
+2. Execute the following SQL scripts:
 
-### 3. Cách hoạt động:
-1. **Khởi động**:
-   - Spring Boot khởi động ứng dụng
-   - Quét và tạo các beans (`@Service`, `@Component`)
-   - Inject `IOService` vào `Test` class
+```sql
+-- Create Company table
+CREATE TABLE eip_m_company (
+    company_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    company_name NVARCHAR(255) NOT NULL,
+    company_name_kana NVARCHAR(255),
+    zipcode VARCHAR(20),
+    address NVARCHAR(255),
+    telephone VARCHAR(50),
+    fax_number VARCHAR(50),
+    url VARCHAR(255),
+    created_user_id BIGINT,
+    modified_user_id BIGINT,
+    created DATETIME,
+    modified DATETIME
+);
 
-2. **Luồng xử lý**:
-   ```
-   [Tạo danh sách Pet] -> [Lưu xuống file] -> [Đọc từ file] -> [Hiển thị tiếng kêu]
-   ```
+-- Create Position table
+CREATE TABLE eip_m_position (
+    position_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    position_name NVARCHAR(255) NOT NULL,
+    created_user_id BIGINT,
+    modified_user_id BIGINT,
+    created DATETIME,
+    modified DATETIME
+);
 
-3. **Chi tiết từng bước**:
-   - **Bước 1**: Tạo danh sách thú cưng mẫu
-     ```java
-     List<Pet> pets = Arrays.asList(
-         new Pet("Mowzer", "cat", 3),
-         new Pet("Rex", "dog", 5),
-         new Pet("Whiskers", "cat", 2)
-     );
-     ```
+-- Create Group table
+CREATE TABLE turbine_group (
+    group_name VARCHAR(255) PRIMARY KEY,
+    owner_id BIGINT,
+    group_alias_name NVARCHAR(255),
+    created_user_id BIGINT,
+    modified_user_id BIGINT,
+    created DATETIME,
+    modified DATETIME
+);
 
-   - **Bước 2**: Lưu xuống file
-     ```java
-     // Format: name,type,age
-     Mowzer,cat,3
-     Rex,dog,5
-     Whiskers,cat,2
-     ```
+-- Create Post table
+CREATE TABLE eip_m_post (
+    post_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    post_name NVARCHAR(255) NOT NULL,
+    company_id BIGINT,
+    group_name VARCHAR(255),
+    created_user_id BIGINT,
+    modified_user_id BIGINT,
+    created DATETIME,
+    modified DATETIME,
+    FOREIGN KEY (company_id) REFERENCES eip_m_company(company_id),
+    FOREIGN KEY (group_name) REFERENCES turbine_group(group_name)
+);
 
-   - **Bước 3**: Đọc từ file
-     - Đọc từng dòng
-     - Tách thông tin bằng dấu phẩy
-     - Tạo lại đối tượng Pet
+-- Create User table
+CREATE TABLE turbine_user (
+    user_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    login_name VARCHAR(255) NOT NULL UNIQUE,
+    password_value VARCHAR(255) NOT NULL,
+    first_name NVARCHAR(255),
+    last_name NVARCHAR(255),
+    first_name_kana NVARCHAR(255),
+    last_name_kana NVARCHAR(255),
+    email VARCHAR(255),
+    out_telephone VARCHAR(50),
+    in_telephone VARCHAR(50),
+    cellular_phone VARCHAR(50),
+    cellular_mail VARCHAR(255),
+    photo VARCHAR(255),
+    created_user_id BIGINT,
+    modified_user_id BIGINT,
+    created DATETIME,
+    modified DATETIME,
+    last_login DATETIME,
+    disabled CHAR(1),
+    password_changed DATETIME,
+    is_admin BIT,
+    position_id BIGINT,
+    company_id BIGINT,
+    FOREIGN KEY (position_id) REFERENCES eip_m_position(position_id),
+    FOREIGN KEY (company_id) REFERENCES eip_m_company(company_id)
+);
+```
 
-   - **Bước 4**: Hiển thị tiếng kêu
-     ```
-     Mowzer cat says meow
-     Rex dog says woof
-     Whiskers cat says meow
-     ```
+## Configuration
+1. Update database connection in `src/main/resources/application.properties`:
+```properties
+spring.datasource.url=jdbc:sqlserver://[YOUR_SERVER]\\SQLEXPRESS;databaseName=Long101;encrypt=true;trustServerCertificate=true
+spring.datasource.username=sa
+spring.datasource.password=123
+```
 
-### 4. Kiến thức áp dụng:
-1. **OOP**:
-   - Encapsulation (đóng gói): private fields, getters/setters
-   - Class và Objects
-   - Inheritance (kế thừa): implements interfaces
+## Building and Running
+1. Clone the repository:
+```bash
+git clone [repository_url]
+```
 
-2. **File I/O**:
-   - BufferedWriter để ghi file
-   - BufferedReader để đọc file
-   - Try-with-resources để quản lý tài nguyên
+2. Navigate to project directory:
+```bash
+cd SpringAssignment
+```
 
-3. **Spring Framework**:
-   - Dependency Injection (`@Autowired`)
-   - Component scanning (`@Service`, `@Component`)
-   - Application lifecycle (`CommandLineRunner`)
+3. Build the project:
+```bash
+mvn clean install
+```
 
-### 5. Kết quả đạt được:
-1. Hiểu và áp dụng được OOP
-2. Thực hành được File I/O
-3. Nắm được cách Spring quản lý dependencies
-4. Tạo được ứng dụng hoàn chỉnh với đầy đủ chức năng
+4. Run the application:
+```bash
+mvn spring-boot:run
+```
 
-**Các annotation tạo Bean phổ biến:**
+5. Access the application:
+- URL: http://localhost:8080/aipo/users
 
-1. `@Component`: Bean chung chung
-2. `@Service`: Bean xử lý business logic
-3. `@Repository`: Bean tương tác với database
-4. `@Controller`/`@RestController`: Bean xử lý web requests
+## Features
+- User Management
+  - Create new users
+  - Search users
+  - Enable/Disable users
+  - Delete users
+- Modern UI with responsive design
+- Form validation
+- Japanese language support (Kana fields)
+- File upload for user photos
 
-### 2. @Autowired là gì?
+## Technology Stack
+- Spring Boot 2.7.0
+- Spring MVC
+- Spring Data JPA
+- Spring Security
+- JSP & JSTL
+- Bootstrap 5
+- SQL Server
+- Maven
 
-- `@Autowired` là cách yêu cầu Spring inject (tiêm) một Bean vào nơi cần dùng
-- Spring sẽ tìm Bean phù hợp và tự động inject vào
+## Project Structure
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── tandev/
+│   │       └── springassignment/
+│   │           ├── controller/
+│   │           ├── dto/
+│   │           ├── entity/
+│   │           ├── repository/
+│   │           └── service/
+│   ├── resources/
+│   │   ├── static/
+│   │   │   └── css/
+│   │   └── application.properties
+│   └── webapp/
+│       └── WEB-INF/
+│           └── views/
+└── test/
+    └── java/
+```
+
+## Contributing
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests.
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
