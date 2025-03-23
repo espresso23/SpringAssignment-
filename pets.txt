@@ -1,0 +1,3 @@
+Mowzer,cat,3
+Rex,dog,5
+Whiskers,cat,2
