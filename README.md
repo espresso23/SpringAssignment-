@@ -176,3 +176,77 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
+
+Để nhập dữ liệu vào form thêm người dùng mà không gặp lỗi, bạn cần đảm bảo rằng các trường bắt buộc được điền đúng cách và tuân thủ các quy tắc xác thực. Dưới đây là một ví dụ về dữ liệu hợp lệ mà bạn có thể nhập vào form:
+
+Login Name: Tên đăng nhập phải là duy nhất và không được trống. Ví dụ: john_doe.
+
+Password: Mật khẩu phải được nhập và xác nhận lại. Ví dụ: password123.
+
+Confirm Password: Phải giống với mật khẩu đã nhập. Ví dụ: password123.
+
+First Name: Tên không được trống. Ví dụ: John.
+
+Last Name: Họ không được trống. Ví dụ: Doe.
+
+First Name (Kana): Tên bằng kana (không bắt buộc). Ví dụ: ジョン.
+
+Last Name (Kana): Họ bằng kana (không bắt buộc). Ví dụ: ドウ.
+
+Email: Địa chỉ email hợp lệ (không bắt buộc). Ví dụ: john.doe@example.com.
+
+Cellular Mail: Địa chỉ email hợp lệ (không bắt buộc). Ví dụ: john.doe@cellular.com.
+
+Outside Telephone: Số điện thoại (không bắt buộc). Ví dụ: 0123456789.
+
+Inside Telephone: Số điện thoại nội bộ (không bắt buộc). Ví dụ: 1234.
+
+Cellular Phone: Số điện thoại di động (không bắt buộc). Ví dụ: 0987654321.
+
+Photo: Tải lên một tệp hình ảnh (không bắt buộc).
+
+Position: Chọn một vị trí từ danh sách (bắt buộc). Ví dụ: Manager.
+
+Administrator: Chọn nếu người dùng là quản trị viên (không bắt buộc).
+
+Ví dụ dữ liệu nhập vào form:
+Login Name: john_doe
+
+Password: password123
+
+Confirm Password: password123
+
+First Name: John
+
+Last Name: Doe
+
+First Name (Kana): ジョン
+
+Last Name (Kana): ドウ
+
+Email: john.doe@example.com
+
+Cellular Mail: john.doe@cellular.com
+
+Outside Telephone: 0123456789
+
+Inside Telephone: 1234
+
+Cellular Phone: 0987654321
+
+Photo: (Tải lên một tệp hình ảnh nếu có)
+
+Position: Manager
+
+Administrator: (Chọn nếu cần)
+
+Lưu ý:
+Các trường có dấu * là bắt buộc và phải được điền đúng cách.
+
+Login Name phải là duy nhất, nếu không sẽ hiển thị thông báo lỗi.
+
+Password và Confirm Password phải khớp nhau.
+
+Position phải được chọn từ danh sách.
+
+Nếu bạn nhập đúng các thông tin trên, form sẽ không báo lỗi và dữ liệu sẽ được gửi thành công.

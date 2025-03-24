@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search User</title>
+    <link rel="stylesheet" href="./css/fStyle.css">
+</head>
+<body>
+<div class="search-container">
+    <select id="searchCriteria">
+        <option value="username">User Name</option>
+        <option value="name">Name</option>
+        <option value="department">Department</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Enter search keyword">
+    <button id="searchBtn">Search</button>
+</div>
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Danh sách người dùng sẽ được hiển thị ở đây -->
+    </tbody>
+</table>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,217 +1,77 @@
-/* Banner Styles */
-.banner {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.banner h1 {
+/* fStyle.css */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-size: 1.8rem;
-    font-weight: 600;
+    padding: 0;
 }
 
-/* Menu Styles */
-.menu {
-    background-color: #34495e;
-    padding: 0.5rem 0;
+/* Modal (Popup) */
+.modal {
+    display: none; /* Ẩn popup mặc định */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
 }
 
-.menu .nav-link {
-    color: #ecf0f1;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
-}
-
-.menu .nav-link:hover {
-    background-color: #2c3e50;
-    border-radius: 4px;
-}
-
-/* Body Content Styles */
-.body-content {
-    padding: 2rem 0;
-    min-height: calc(100vh - 200px);
-}
-
-/* Table Styles */
-.table-custom {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.table-custom th {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-}
-
-/* Form Styles */
-.form-control {
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-    padding: 0.5rem 0.75rem;
-}
-
-.form-control:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
-}
-
-/* Button Styles */
-.btn-custom {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: #3498db;
-    border-color: #3498db;
-}
-
-.btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
-}
-
-/* Modal Styles */
 .modal-content {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.modal-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-}
-
-/* Search Box Styles */
-.search-box {
     background-color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
 }
 
-/* Placeholder Styles */
-::placeholder {
-    color: #adb5bd !important;
-    opacity: 1;
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-/* Checkbox Styles */
-.form-check-input {
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.form-check-input:checked {
-    background-color: #3498db;
-    border-color: #3498db;
-}
-
-/* Footer Styles */
-.footer {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Form styles */
+/* Form styling */
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.form-control::placeholder {
-    color: #adb5bd;
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
 }
 
-/* Table styles */
-.table th {
-    background-color: #f8f9fa;
+.form-group input[type="checkbox"] {
+    width: auto;
 }
 
-.table-responsive {
-    margin-bottom: 1rem;
+.form-group button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-/* Modal styles */
-.modal-lg {
-    max-width: 800px;
+.form-group button:hover {
+    background-color: #45a049;
 }
-
-.modal-body {
-    padding: 1.5rem;
-}
-
-/* Button styles */
-.btn {
-    margin-right: 0.5rem;
-}
-
-.btn:last-child {
-    margin-right: 0;
-}
-
-/* Validation styles */
-.is-invalid {
-    border-color: #dc3545;
-}
-
-.invalid-feedback {
-    color: #dc3545;
-    font-size: 0.875rem;
-}
-
-/* Checkbox styles */
-.form-check-input {
-    margin-top: 0.3rem;
-}
-
-/* File input styles */
-input[type="file"] {
-    padding: 0.375rem;
-}
-
-/* Select styles */
-.form-select {
-    padding-right: 2rem;
-}
-
-/* Search form styles */
-.search-form {
-    margin-bottom: 1rem;
-}
-
-/* Action buttons styles */
-.action-buttons {
-    white-space: nowrap;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .banner h1 {
-        font-size: 1.25rem;
-    }
-
-    .modal-lg {
-        max-width: 100%;
-    }
-
-    .btn {
-        margin-bottom: 0.5rem;
-        width: 100%;
-    }
-} 

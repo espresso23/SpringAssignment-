@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="./css/fStyle.css">
+</head>
+<body>
+<form id="addUserForm">
+    <!-- Login Name -->
+    <div class="form-group">
+        <label for="loginName">Login Name *</label>
+        <input type="text" id="loginName" name="loginName" placeholder="Enter login name" required>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+        <label for="password">Password *</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+        <label for="passwordConfirm">Confirm Password *</label>
+        <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm password" required>
+    </div>
+
+    <!-- First Name -->
+    <div class="form-group">
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+    </div>
+
+    <!-- First Name Kana -->
+    <div class="form-group">
+        <label for="firstNameKana">First Name (Kana)</label>
+        <input type="text" id="firstNameKana" name="firstNameKana" placeholder="Enter first name in Kana">
+    </div>
+
+    <!-- Last Name Kana -->
+    <div class="form-group">
+        <label for="lastNameKana">Last Name (Kana)</label>
+        <input type="text" id="lastNameKana" name="lastNameKana" placeholder="Enter last name in Kana">
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email">
+    </div>
+
+    <!-- Out Telephone -->
+    <div class="form-group">
+        <label for="outTelephone">Outside Telephone</label>
+        <input type="text" id="outTelephone" name="outTelephone" placeholder="Enter outside telephone">
+    </div>
+
+    <!-- In Telephone -->
+    <div class="form-group">
+        <label for="inTelephone">Inside Telephone</label>
+        <input type="text" id="inTelephone" name="inTelephone" placeholder="Enter inside telephone">
+    </div>
+
+    <!-- Cellular Phone -->
+    <div class="form-group">
+        <label for="cellularPhone">Cellular Phone</label>
+        <input type="text" id="cellularPhone" name="cellularPhone" placeholder="Enter cellular phone">
+    </div>
+
+    <!-- Cellular Mail -->
+    <div class="form-group">
+        <label for="cellularMail">Cellular Mail</label>
+        <input type="email" id="cellularMail" name="cellularMail" placeholder="Enter cellular mail">
+    </div>
+
+    <!-- Photo Upload -->
+    <div class="form-group">
+        <label for="photo">Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+    </div>
+
+    <!-- Department -->
+    <div class="form-group">
+        <label for="department">Department *</label>
+        <select id="department" name="department">
+            <option value="">Select Department</option>
+            <!-- Các tùy chọn sẽ được điền bằng JavaScript -->
+        </select>
+    </div>
+
+    <!-- Position -->
+    <div class="form-group">
+        <label for="positionId">Position *</label>
+        <select id="positionId" name="positionId" class="form-control">
+            <option value="">Select Position</option>
+            <!-- Các tùy chọn sẽ được điền bằng JavaScript -->
+        </select>
+        <div class="invalid-feedback">Position is required</div>
+    </div>
+
+    <!-- Is Admin -->
+    <div class="form-group">
+        <label for="isAdmin">Is Admin</label>
+        <input type="checkbox" id="isAdmin" name="isAdmin">
+    </div>
+
+    <!-- Nút Save -->
+    <div class="form-group">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

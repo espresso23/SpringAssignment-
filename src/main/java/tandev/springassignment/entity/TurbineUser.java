@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * Entity class representing a user in the system.
  * This class maps to the turbine_user table in the database.
  */
-@Data
+@Data//auto generated getters/setters
 @Entity
 @Table(name = "turbine_user")
 public class TurbineUser {
@@ -150,7 +150,7 @@ public class TurbineUser {
      * Path or URL to user's profile photo
      */
     @Column(name = "photo")
-    private byte[] photo;
+    private String photo;
 
     /**
      * Flag indicating whether user has a photo
@@ -192,7 +192,7 @@ public class TurbineUser {
      * Migration version
      */
     @Column(name = "migrate_version", nullable = false, columnDefinition = "integer default 0")
-    private Integer migrateVersion;
+    private Integer migrateVersion = 0; // Khởi tạo giá trị mặc định
 
     /**
      * ID of the user who created this record
@@ -222,7 +222,10 @@ public class TurbineUser {
     @JoinColumn(name = "position_id", insertable = false, updatable = false)
     private EipMPosition position;
 
-    public void setIsAdmin(Boolean isAdmin) {
+    @Column(name = "is_admin")
+    private Boolean isAdmin;
 
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

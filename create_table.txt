@@ -1,0 +1,147 @@
+-- Table: public.turbine_user
+
+-- DROP TABLE public.turbine_user;
+
+CREATE TABLE public.turbine_user
+(
+  user_id integer NOT NULL,
+  login_name character varying(32) NOT NULL,
+  password_value character varying(200) NOT NULL,
+  first_name character varying(99) NOT NULL,
+  last_name character varying(99) NOT NULL,
+  email character varying(99),
+  confirm_value character varying(99),
+  modified timestamp without time zone,
+  created timestamp without time zone,
+  last_login timestamp without time zone,
+  disabled character(1),
+  objectdata bytea,
+  password_changed timestamp without time zone,
+  company_id integer,
+  position_id integer,
+  in_telephone character varying(15),
+  out_telephone character varying(15),
+  cellular_phone character varying(15),
+  cellular_mail character varying(99),
+  cellular_uid character varying(99),
+  first_name_kana character varying(99),
+  last_name_kana character varying(99),
+  photo bytea,
+  has_photo character varying(1) DEFAULT 'F'::character varying,
+  photo_modified timestamp without time zone,
+  photo_smartphone bytea,
+  has_photo_smartphone character varying(1) DEFAULT 'F'::character varying,
+  photo_modified_smartphone timestamp without time zone,
+  tutorial_forbid character varying(1) DEFAULT 'F'::character varying,
+  migrate_version integer NOT NULL DEFAULT 0,
+  created_user_id integer,
+  updated_user_id integer,
+  CONSTRAINT turbine_user_pkey PRIMARY KEY (user_id),
+  CONSTRAINT turbine_user_login_name_key UNIQUE (login_name)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.turbine_user
+  OWNER TO postgres;
+
+  
+-- Table: public.turbine_group
+
+-- DROP TABLE public.turbine_group;
+
+CREATE TABLE public.turbine_group
+(
+  group_id integer NOT NULL,
+  group_name character varying(99) NOT NULL,
+  objectdata bytea,
+  owner_id integer,
+  group_alias_name character varying(99),
+  public_flag character(1),
+  CONSTRAINT turbine_group_pkey PRIMARY KEY (group_id),
+  CONSTRAINT turbine_group_group_name_key UNIQUE (group_name),
+  CONSTRAINT turbine_group_owner_id_group_alias_name_key UNIQUE (owner_id, group_alias_name)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.turbine_group
+  OWNER TO postgres;
+
+
+-- Table: public.eip_m_post
+
+-- DROP TABLE public.eip_m_post;
+
+CREATE TABLE public.eip_m_post
+(
+  post_id integer NOT NULL,
+  company_id integer NOT NULL,
+  post_name character varying(64) NOT NULL,
+  zipcode character varying(8),
+  address character varying(64),
+  in_telephone character varying(15),
+  out_telephone character varying(15),
+  fax_number character varying(15),
+  group_name character varying(99),
+  sort integer,
+  create_date date,
+  update_date timestamp without time zone,
+  CONSTRAINT eip_m_post_pkey PRIMARY KEY (post_id),
+  CONSTRAINT eip_m_post_group_name_key UNIQUE (group_name)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.eip_m_post
+  OWNER TO postgres;
+
+  
+-- Table: public.eip_m_position
+
+-- DROP TABLE public.eip_m_position;
+
+CREATE TABLE public.eip_m_position
+(
+  position_id integer NOT NULL,
+  position_name character varying(64) NOT NULL,
+  sort integer,
+  create_date date,
+  update_date timestamp without time zone,
+  CONSTRAINT eip_m_position_pkey PRIMARY KEY (position_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.eip_m_position
+  OWNER TO postgres;
+
+
+-- Table: public.eip_m_company
+
+-- DROP TABLE public.eip_m_company;
+
+CREATE TABLE public.eip_m_company
+(
+  company_id integer NOT NULL,
+  company_name character varying(64) NOT NULL,
+  company_name_kana character varying(64),
+  zipcode character varying(8),
+  address character varying(64),
+  telephone character varying(15),
+  fax_number character varying(15),
+  url character varying(99),
+  ipaddress character varying(99),
+  port integer,
+  ipaddress_internal character varying(99),
+  port_internal integer,
+  create_date date,
+  update_date timestamp without time zone,
+  CONSTRAINT eip_m_company_pkey PRIMARY KEY (company_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.eip_m_company
+  OWNER TO postgres;
+

@@ -5,7 +5,6 @@ import javax.validation.constraints.*;
 
 @Data
 public class UserDTO {
-    private Long userId;
 
     @NotBlank(message = "Login name is required")
     private String loginName;

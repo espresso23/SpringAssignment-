@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="./css/fStyle.css">
+</head>
+<body>
+<div class="banner">
+    <h1>AIPO User Management</h1>
+</div>
+<div class="menu">
+    <a href="#">Home</a>
+    <a href="#">Search User</a>
+</div>
+<div class="body">
+    <button id="openAddUserModal">Add User</button>
+</div>
+
+<!-- Popup Add User -->
+<div id="addUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Nhúng user.html vào iframe -->
+        <iframe src="user.html" width="100%" height="500px" frameborder="0"></iframe>
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
